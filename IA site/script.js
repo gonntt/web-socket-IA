@@ -5,7 +5,7 @@ const textoIa = document.getElementById("texto-ia");
 const videoCaptureCanvas = document.createElement("canvas");
 const videoCaptureCtx = videoCaptureCanvas.getContext("2d");
 
-const socket = new WebSocket("wss://SEU_BACKEND_AQUI/ws");
+const socket = new WebSocket("ws://192.168.1.2:8000/ws");
 
 const synth = window.speechSynthesis;
 let logQueue = [];
