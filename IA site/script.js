@@ -12,9 +12,9 @@ let logQueue = [];
 let isSpeaking = false;
 let recentLogs = {}; 
 
-// Acesso à câmera traseira
+// Acesso à câmera com modo ideal (evita erro em desktop)
 navigator.mediaDevices.getUserMedia({
-  video: { facingMode: { exact: "environment" } },
+  video: { facingMode: { ideal: "environment" } },
   audio: false
 }).then(stream => {
   video.srcObject = stream;
@@ -34,7 +34,8 @@ navigator.mediaDevices.getUserMedia({
   }, 300);
 
 }).catch(err => {
-  alert("Erro ao acessar câmera: " + err);
+  alert("Erro ao acessar câmera: " + err.message);
+  console.error("Erro ao acessar câmera:", err);
 });
 
 // WebSocket: recebe dados do servidor
